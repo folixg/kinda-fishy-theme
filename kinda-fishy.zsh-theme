@@ -1,11 +1,14 @@
 # ZSH theme based on the fishy theme, that ships with oh-my-zsh.
 # Differs in two aspects:
 # 1. full path is shown instead of abbreviated directories
-# 2. user@machine is not shown for localhost, only in ssh sessions
+# 2. user@machine is not shown for localhost, only in ssh sessions and inside
+# docker containers
 
 local user_color='green'; [ $UID -eq 0 ] && user_color='red'
 if [[ -n "$SSH_CLIENT" ]]; then
   PROMPT='%n@%m %{$fg[$user_color]%}%~%{$reset_color%}%(!.#.>) '
+elif [[ "$(grep docker /proc/1/cgroup)" ]]; then
+  PROMPT='%n@docker %{$fg[$user_color]%}%~%{$reset_color%}%(!.#.>) '
 else
   PROMPT='%{$fg[$user_color]%}%~%{$reset_color%}%(!.#.>) '
 fi 
