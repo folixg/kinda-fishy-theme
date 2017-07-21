@@ -8,3 +8,4 @@ It differs in two aspects:
 
 #### Screenshot
 ![screenshot.png](screenshot.png)
+The screenshot shows a xterm using [Lucario](https://github.com/raphamorim/lucario) color scheme.
